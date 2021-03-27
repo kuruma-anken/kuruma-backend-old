@@ -1,0 +1,5 @@
+defmodule Kuruma.Repo do
+  use Ecto.Repo,
+    otp_app: :kuruma,
+    adapter: Ecto.Adapters.Postgres
+end
