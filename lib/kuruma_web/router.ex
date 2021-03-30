@@ -16,7 +16,7 @@ defmodule KurumaWeb.Router do
   scope "/", KurumaWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+    get "/*route", PageController, :index
   end
 
   # Other scopes may use custom stacks.

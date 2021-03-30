@@ -1,5 +1,5 @@
 <script>
-  const name = "World!";
+  import Routes from "./Router.svelte";
 </script>
 
-<h1>Hello {name}</h1>
+<Routes />
