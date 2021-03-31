@@ -10,7 +10,9 @@
 <Layout>
   <h1>Dashboard</h1>
 
-  <Link to="/login">Login</Link>
+  <p>
+    <Link to="/login">Login</Link>
+  </p>
 
   {#if $data.loading}
     Loading...
