@@ -45,13 +45,15 @@ defmodule Kuruma.MixProject do
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
+      {:email_tld_validator, "~> 0.1"},
 
       # GraphQL
       {:absinthe, "~> 1.6.3"},
       {:absinthe_plug, "~> 1.5.6"},
 
       # Authentication
-      {:argon2_elixir, "~> 2.4"}
+      {:argon2_elixir, "~> 2.4"},
+      {:joken, "~> 2.3"}
     ]
   end
 

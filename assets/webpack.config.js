@@ -66,7 +66,8 @@ module.exports = (env, options) => {
               compilerOptions: {
                 dev: devMode
               },
-              emitCss: !devMode
+              emitCss: !devMode,
+              preprocess: require("svelte-preprocess")({})
             }
           }
         },
