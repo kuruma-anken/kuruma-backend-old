@@ -15,6 +15,10 @@ defmodule KurumaWeb.Api.Schema do
     end
   end
 
+  mutation do
+    import_fields(:session_mutations)
+  end
+
   def middleware(middleware, %{identifier: :current_user}, %{identifier: :query}) do
     middleware
   end

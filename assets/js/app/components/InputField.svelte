@@ -21,7 +21,6 @@
 <div class="field">
   {#if label}<label class="label" for={id || name}>{label}</label>{/if}
   <input
-    autofocus={autofocus ? "true" : undefined}
     id={id || name}
     {name}
     {value}

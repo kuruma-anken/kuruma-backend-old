@@ -3,9 +3,7 @@
   import Layout from "../layout/Layout.svelte";
 </script>
 
-<Layout>
-  <h1>Dashboard</h1>
-
+<Layout title="Dashboard">
   <p>
     <Link to="/login">Login</Link>
   </p>

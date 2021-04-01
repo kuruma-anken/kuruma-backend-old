@@ -53,7 +53,10 @@ defmodule Kuruma.MixProject do
 
       # Authentication
       {:argon2_elixir, "~> 2.4"},
-      {:joken, "~> 2.3"}
+      {:joken, "~> 2.3"},
+
+      # Testing
+      {:ex_machina, "~> 2.7"}
     ]
   end
 

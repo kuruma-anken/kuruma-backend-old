@@ -13,7 +13,7 @@ defmodule KurumaWeb.Api.Types.Users do
 
   object :user_queries do
     field :current_user, :user do
-      resolve(fn _, _ -> {:ok, nil} end)
+      resolve(fn _, %{context: %{current_user: user}} -> {:ok, user} end)
     end
   end
 end

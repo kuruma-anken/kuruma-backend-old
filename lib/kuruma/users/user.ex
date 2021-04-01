@@ -23,14 +23,15 @@ defmodule Kuruma.Users.User do
     |> cast(attrs, @cast)
     |> validate_required(@required)
     |> EmailTldValidator.Ecto.validate_email()
-    |> unique_constraint(:email, message: "此電子信箱已被使用")
+    |> unique_constraint(:email)
     |> encrypt_password()
-    |> validate_confirmation(:password, message: "與設定密碼輸入不相符")
-    |> validate_format(
-      :password,
-      ~r/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,100}$/,
-      message: "密碼應至少包含一個大寫字母、一個小寫字母與一個數字。"
-    )
+    |> validate_confirmation(:password)
+
+    # |> validate_format(
+    #   :password,
+    #   ~r/^(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,100}$/,
+    #   message: "密碼應至少包含一個大寫字母、一個小寫字母與一個數字。"
+    # )
   end
 
   def registration_changeset(user, attrs) do

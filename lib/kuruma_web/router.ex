@@ -11,24 +11,24 @@ defmodule KurumaWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug KurumaWeb.Plugs.FetchUser
   end
 
   scope "/api" do
-    post "/graphql", Absinthe.Plug, schema: KurumaWeb.Api.Schema
-    get "/graphql", Absinthe.Plug.GraphiQL, schema: KurumaWeb.Api.Schema, interface: :playground
+    pipe_through :api
+
+    post "/graphql", Absinthe.Plug,
+      schema: KurumaWeb.Api.Schema,
+      before_send: {KurumaWeb.Api.CookieHelper, :maybe_put_cookie}
+
+    get "/graphql", Absinthe.Plug.GraphiQL,
+      schema: KurumaWeb.Api.Schema,
+      interface: :playground
   end
 
   scope "/", KurumaWeb do
     pipe_through :browser
 
     get "/*route", PageController, :index
-  end
-  if Mix.env() in [:dev, :test] do
-    import Phoenix.LiveDashboard.Router
-
-    scope "/" do
-      pipe_through :browser
-      live_dashboard "/dashboard", metrics: KurumaWeb.Telemetry
-    end
   end
 end

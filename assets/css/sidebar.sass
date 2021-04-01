@@ -1,0 +1,26 @@
+.sidebar
+  background: $sidebar-bg
+  padding: 1.5rem
+
+.sidebar-link, .sidebar-sign-out
+  display: block
+  width: 100%
+  color: inherit
+  height: $sidebar-link-height
+  line-height: $sidebar-link-height
+  transition: .2s ease-in-out
+  padding: 0 $sidebar-padding
+  outline: none
+  border: none
+  font-size: 1rem
+  cursor: pointer
+  background: none
+  margin: 0 -#{$sidebar-padding}
+  box-sizing: content-box
+  text-align: left
+
+  &:hover
+    background: $sidebar-link-hover-bg
+
+  &.is-active
+    color: $primary

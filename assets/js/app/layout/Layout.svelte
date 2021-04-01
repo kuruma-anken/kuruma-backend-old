@@ -1,10 +1,12 @@
 <script>
   import { useNavigate } from "svelte-navigator";
   import Loader from "../components/Loader.svelte";
+  import Sidebar from "./Sidebar.svelte";
 
   import { useAuth } from "../graphql/queries/userQueries";
   const user = useAuth();
   const navigate = useNavigate();
+  export let title = null;
 
   $: if (!$user.loading && !$user.data?.currentUser) {
     navigate("/login");
@@ -15,7 +17,12 @@
   <Loader />
 {:else if $user.data && $user.data.currentUser}
   <div class="layout">
-    <aside class="sidebar">Sidebar</aside>
-    <main><slot /></main>
+    <Sidebar />
+    <main role="main">
+      {#if title}
+        <h1 class="title">{title}</h1>
+      {/if}
+      <slot />
+    </main>
   </div>
 {/if}
