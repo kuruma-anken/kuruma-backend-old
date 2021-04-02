@@ -3,8 +3,8 @@ defmodule Kuruma.Repo.Migrations.CreateCarModels do
 
   def change do
     create table(:car_models) do
-      add :name, :string
-      add :car_maker_id, references(:car_makers, on_delete: :delete_all)
+      add :name, :string, null: false
+      add :car_maker_id, references(:car_makers, on_delete: :delete_all), null: false
 
       timestamps()
     end

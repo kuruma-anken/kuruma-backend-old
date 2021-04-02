@@ -6,13 +6,12 @@ defmodule KurumaWeb.Api.Schema do
   import_types(Absinthe.Type.Custom)
   import_types(KurumaWeb.Api.Types.Sessions)
   import_types(KurumaWeb.Api.Types.JSON)
+  import_types(KurumaWeb.Api.Types.Vehicles)
+  import_types(KurumaWeb.Api.Types.Pagination)
 
   query do
     import_fields(:user_queries)
-
-    field :hello, :string do
-      resolve(fn _, _ -> {:ok, "Hello, world!"} end)
-    end
+    import_fields(:vehicle_queries)
   end
 
   mutation do

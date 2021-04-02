@@ -47,6 +47,9 @@ defmodule Kuruma.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:email_tld_validator, "~> 0.1"},
 
+      # Pagination
+      {:scrivener_ecto, "~> 2.7"},
+
       # GraphQL
       {:absinthe, "~> 1.6.3"},
       {:absinthe_plug, "~> 1.5.6"},

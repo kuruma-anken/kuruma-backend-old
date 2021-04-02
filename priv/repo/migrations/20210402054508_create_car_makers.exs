@@ -3,7 +3,7 @@ defmodule Kuruma.Repo.Migrations.CreateCarMakers do
 
   def change do
     create table(:car_makers) do
-      add :name, :string
+      add :name, :string, null: false
 
       timestamps()
     end

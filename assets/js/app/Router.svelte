@@ -6,7 +6,7 @@
 </script>
 
 <Router>
-  <Route path="/" component={Dashboard} />
-  <Route path="/login" component={Login} />
+  <Route path="/"><Dashboard /></Route>
+  <Route path="/login"><Login /></Route>
   <Route component={NotFound} />
 </Router>

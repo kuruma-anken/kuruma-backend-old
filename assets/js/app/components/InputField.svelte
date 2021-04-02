@@ -1,20 +1,22 @@
-<script>
-  import { onMount, tick } from "svelte";
+<script lang="ts">
+  import { onMount } from "svelte";
   export let id = "";
   export let value = "";
-  export let label;
-  export let name;
+  export let label: string | undefined;
+  export let name: string | undefined;
   export let type = "text";
   export let autofocus = false;
+  let ref: HTMLInputElement;
 
-  let ref;
-
-  const onInput = (e) => {
+  const onInput = (e: any) => {
     value = e.target.value;
   };
 
   onMount(() => {
-    if (autofocus) ref.focus();
+    if (autofocus)
+      setTimeout(() => {
+        ref.focus();
+      }, 0);
   });
 </script>
 

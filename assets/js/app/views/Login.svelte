@@ -52,7 +52,7 @@
               bind:value={form.email}
               label="Email:"
               type="text"
-              autofocus
+              autofocus={true}
             />
             <InputField
               id="password"

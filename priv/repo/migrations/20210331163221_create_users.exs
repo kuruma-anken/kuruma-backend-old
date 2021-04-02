@@ -5,9 +5,9 @@ defmodule Kuruma.Repo.Migrations.CreateUsers do
     execute "create extension if not exists citext with schema public"
 
     create table(:users) do
-      add :first_name, :string
-      add :last_name, :string
-      add :email, :citext
+      add :first_name, :string, null: false
+      add :last_name, :string, null: false
+      add :email, :citext, null: false
       add :password_hash, :string
 
       timestamps()
