@@ -8,12 +8,17 @@ defmodule Kuruma.Vehicles do
 
   alias Kuruma.Vehicles.Vehicle
 
+  def preload_assocs(vehicles) do
+    Repo.preload(vehicles, car_model: :car_maker)
+  end
+
   def list_vehicles do
     Repo.all(Vehicle)
   end
 
   def paginate_vehicles(args) do
     Vehicle
+    |> preload(car_model: :car_maker)
     |> Repo.paginate(args)
   end
 

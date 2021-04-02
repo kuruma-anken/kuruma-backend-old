@@ -11,11 +11,13 @@ defmodule KurumaWeb.Api.Types.Vehicles do
     field :car_model_id, non_null(:id)
     field :inserted_at, non_null(:datetime)
     field :updated_at, non_null(:datetime)
+    field :car_model, non_null(:car_model)
   end
 
   object :car_model do
     field :id, non_null(:id)
     field :name, non_null(:string)
+    field :car_maker_id, non_null(:id)
     field :car_maker, non_null(:car_maker)
     field :inserted_at, non_null(:datetime)
     field :updated_at, non_null(:datetime)

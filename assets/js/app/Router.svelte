@@ -3,10 +3,12 @@
   import Dashboard from "./views/Dashboard.svelte";
   import Login from "./views/Login.svelte";
   import NotFound from "./views/NotFound.svelte";
+  import VehicleList from "./views/Vehicles/VehicleList.svelte";
 </script>
 
 <Router>
   <Route path="/"><Dashboard /></Route>
   <Route path="/login"><Login /></Route>
+  <Route path="/vehicles"><VehicleList /></Route>
   <Route component={NotFound} />
 </Router>
