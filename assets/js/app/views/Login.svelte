@@ -1,4 +1,4 @@
-<script>
+<script lang="typescript">
   import { useNavigate } from "svelte-navigator";
   import { useAuth } from "../graphql/queries/userQueries";
   const user = useAuth();
@@ -13,21 +13,21 @@
     navigate("/");
   }
 
-  let errorMessage;
+  let errorMessage: string;
 
   let form = {
     email: "",
     password: ""
   };
 
-  const onSubmit = async (e) => {
+  const onSubmit = async (e: Event) => {
     e.preventDefault();
     const res = await mutate({
       variables: form,
       refetchQueries: ["CurrentUser"],
       awaitRefetchQueries: true
     });
-    if (res.data.signIn.success) {
+    if (res.data!.signIn.success) {
       errorMessage = "";
       navigate("/");
     } else {

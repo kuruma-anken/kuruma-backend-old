@@ -1,9 +1,7 @@
 {
-    "presets": [
-      ["@babel/preset-env", { targets: { esmodules: true } }],
-      "@babel/preset-typescript"
-    ],
-    "plugins": [
-      "graphql-tag"
-    ]
+  "presets": [
+    ["@babel/preset-env", { "targets": { "esmodules": true } }],
+    "@babel/preset-typescript"
+  ],
+  "plugins": ["graphql-tag", "@babel/plugin-proposal-optional-chaining"]
 }

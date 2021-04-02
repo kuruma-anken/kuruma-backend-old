@@ -1,8 +1,8 @@
-<script>
+<script lang="typescript">
   import { Link, useLocation } from "svelte-navigator";
   const location = useLocation();
-  export let to;
-  let className;
+  export let to: string;
+  let className: string;
 
   $: className =
     $location?.pathname === to ? `sidebar-link is-active` : "sidebar-link";

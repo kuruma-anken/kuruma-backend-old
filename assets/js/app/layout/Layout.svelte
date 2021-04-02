@@ -1,4 +1,4 @@
-<script>
+<script lang="typescript">
   import { useNavigate } from "svelte-navigator";
   import Loader from "../components/Loader.svelte";
   import Sidebar from "./Sidebar.svelte";
@@ -6,7 +6,7 @@
   import { useAuth } from "../graphql/queries/userQueries";
   const user = useAuth();
   const navigate = useNavigate();
-  export let title = null;
+  export let title: string | null = null;
 
   $: if (!$user.loading && !$user.data?.currentUser) {
     navigate("/login");

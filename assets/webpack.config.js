@@ -22,23 +22,7 @@ module.exports = (env, options) => {
     },
     optimization: {
       minimize: true,
-      minimizer: [
-        new TerserPlugin({
-          cache: true,
-          parallel: true,
-          sourceMap: devMode,
-          terserOptions: {
-            module: true,
-            mangle: {
-              toplevel: true
-            },
-            compress: {
-              toplevel: true
-            }
-          }
-        }),
-        new OptimizeCSSAssetsPlugin({})
-      ]
+      minimizer: [new TerserPlugin(), new OptimizeCSSAssetsPlugin({})]
     },
     entry: {
       app: glob.sync("./vendor/**/*.js").concat(["./js/app.js"])
