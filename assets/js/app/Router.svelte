@@ -10,5 +10,5 @@
   <Route path="/"><Dashboard /></Route>
   <Route path="/login"><Login /></Route>
   <Route path="/vehicles"><VehicleList /></Route>
-  <Route component={NotFound} />
+  <Route><NotFound /></Route>
 </Router>

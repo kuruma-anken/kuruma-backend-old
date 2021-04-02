@@ -1,6 +1,7 @@
 <script lang="typescript">
   import { useNavigate } from "svelte-navigator";
   import Loader from "../components/Loader.svelte";
+  import OuterSidebar from "./OuterSidebar.svelte";
   import Sidebar from "./Sidebar.svelte";
 
   import { useAuth } from "../graphql/queries/userQueries";
@@ -17,11 +18,10 @@
   <Loader />
 {:else if $user.data && $user.data.currentUser}
   <div class="layout">
-    <Sidebar />
-    <main role="main">
-      {#if title}
-        <h1 class="title">{title}</h1>
-      {/if}
+    <OuterSidebar />
+    <Sidebar {title} />
+    <main role="main" class="main">
+      <header class="layout-header" />
       <slot />
     </main>
   </div>

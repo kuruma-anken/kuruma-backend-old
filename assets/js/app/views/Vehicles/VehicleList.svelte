@@ -1,11 +1,11 @@
 <script lang="typescript">
   import useParams from "../../hooks/useParams";
 
-  import {
+  import type {
     PaginateVehiclesQueryVariables,
-    usePaginateVehiclesQuery,
     Vehicle
   } from "../../graphql/queries/vehicleQueries";
+  import { usePaginateVehiclesQuery } from "../../graphql/queries/vehicleQueries";
   import Layout from "../../layout/Layout.svelte";
   import Loader from "../../components/Loader.svelte";
 

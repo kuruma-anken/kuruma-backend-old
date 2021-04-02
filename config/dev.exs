@@ -58,7 +58,8 @@ config :kuruma, KurumaWeb.Endpoint,
 config :kuruma, KurumaWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      # ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/static/.*(js|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
       ~r"lib/kuruma_web/(live|views)/.*(ex)$",
       ~r"lib/kuruma_web/templates/.*(eex)$"

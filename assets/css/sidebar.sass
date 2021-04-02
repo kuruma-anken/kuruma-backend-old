@@ -1,7 +1,18 @@
 .sidebar
   background: $sidebar-bg
-  padding: 1.5rem
   border-right: 1px solid $sidebar-border-color
+
+  &__header
+    height: $header-height
+    line-height: $header-height
+    padding: 0 1.5rem
+    background: $sidebar-header-bg
+    border-bottom: 1px solid $sidebar-border-color
+    border-left: 1px solid $sidebar-border-color
+
+    &__title
+      font-size: 1.75rem
+      font-weight: bold
 
 .sidebar-link, .sidebar-sign-out
   display: grid
@@ -14,13 +25,8 @@
   line-height: $sidebar-link-height
   transition: .2s ease-in-out
   padding: 0 $sidebar-padding
-  outline: none
-  border: none
   font-size: 1rem
-  cursor: pointer
-  background: none
   margin: 0 -#{$sidebar-padding}
-  box-sizing: content-box
   text-align: left
 
   svg

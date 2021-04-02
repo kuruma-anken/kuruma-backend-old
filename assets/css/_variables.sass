@@ -1,12 +1,21 @@
 $system-font: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif
-$family-sans-serif: "Poppins", "Open Sans", "Nunito Sans", $system-font
-$body-bg: #f8f8f8
+$family-sans-serif: "Rubik", "Poppins", "Open Sans", "Nunito Sans", $system-font
+$body-bg: white
 $primary: #1e90ff
+$secondary: #f1c40f
 
-$sidebar-width: 280px
-$sidebar-bg: transparentize($primary, .95)
-$sidebar-border-color: darken($sidebar-bg, 20%)
-$header-height: 100px
+$header-height: 90px
+
+$outer-sidebar-width: $header-height
+$outer-sidebar-bg: white
+$outer-sidebar-icon-size: $outer-sidebar-width * 0.4
+$outer-sidebar-icon-inactive-color: #666
+$outer-sidebar-icon-active-color: $primary
+
+$sidebar-width: 300px
+$sidebar-bg: #eff2fc
+$sidebar-header-bg: #f4f7ff
+$sidebar-border-color: darken($sidebar-bg, 2%)
 $sidebar-padding: 1.5rem
 $sidebar-link-height: 50px
 $sidebar-link-hover-bg: darken($sidebar-bg, 6%)
