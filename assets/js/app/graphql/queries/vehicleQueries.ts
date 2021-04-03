@@ -62,3 +62,34 @@ export const usePaginateVehiclesQuery = (
     PAGINATE_VEHICLES_QUERY,
     { variables }
   );
+
+export const GET_VEHICLE_QUERY = gql`
+  query GetVehicle($id: ID!) {
+    vehicle: getVehicle(id: $id) {
+      id
+      carModel {
+        id
+        name
+        carMaker {
+          id
+          name
+        }
+      }
+      registration
+      manufacturingYear
+    }
+  }
+`;
+
+export interface GetVehicleQueryResult {
+  vehicle: Vehicle | null;
+}
+
+export interface GetVehicleQueryVariables {
+  id: ID;
+}
+
+export const useGetVehicleQuery = (id: ID) =>
+  query<GetVehicleQueryResult, GetVehicleQueryVariables>(GET_VEHICLE_QUERY, {
+    variables: { id }
+  });

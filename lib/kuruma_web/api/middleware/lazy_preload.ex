@@ -19,6 +19,9 @@ defmodule KurumaWeb.Api.Middleware.LazyPreload do
         %Ecto.Association.NotLoaded{} ->
           Repo.all(Ecto.assoc(source, assoc_name))
 
+        %_module{} = struct ->
+          struct
+
         list when is_list(list) ->
           list
       end

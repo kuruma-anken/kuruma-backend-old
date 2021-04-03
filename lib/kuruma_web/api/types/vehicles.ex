@@ -11,14 +11,21 @@ defmodule KurumaWeb.Api.Types.Vehicles do
     field :car_model_id, non_null(:id)
     field :inserted_at, non_null(:datetime)
     field :updated_at, non_null(:datetime)
-    field :car_model, non_null(:car_model)
+
+    field :car_model, non_null(:car_model) do
+      middleware LazyPreload, :car_model
+    end
   end
 
   object :car_model do
     field :id, non_null(:id)
     field :name, non_null(:string)
     field :car_maker_id, non_null(:id)
-    field :car_maker, non_null(:car_maker)
+
+    field :car_maker, non_null(:car_maker) do
+      middleware LazyPreload, :car_maker
+    end
+
     field :inserted_at, non_null(:datetime)
     field :updated_at, non_null(:datetime)
   end
@@ -45,6 +52,11 @@ defmodule KurumaWeb.Api.Types.Vehicles do
       arg(:page, non_null(:integer), default_value: 1)
       resolve(&VehicleResolvers.paginate_vehicles/2)
       middleware(FormatPage)
+    end
+
+    field :get_vehicle, :vehicle do
+      arg :id, non_null(:id)
+      resolve &VehicleResolvers.get_vehicle/2
     end
   end
 end

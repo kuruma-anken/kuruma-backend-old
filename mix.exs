@@ -47,6 +47,13 @@ defmodule Kuruma.MixProject do
       {:plug_cowboy, "~> 2.0"},
       {:email_tld_validator, "~> 0.1"},
 
+      # S3 uploads
+      {:ex_aws, "~> 2.1"},
+      {:ex_aws_s3, "~> 2.0"},
+      {:hackney, "~> 1.9"},
+      {:sweet_xml, "~> 0.6"},
+      {:uuid, "~> 1.1"},
+
       # Pagination
       {:scrivener_ecto, "~> 2.7"},
 

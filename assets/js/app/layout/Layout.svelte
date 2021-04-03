@@ -10,6 +10,7 @@
   const navigate = useNavigate();
   export let title: string | null = null;
   export let searchPlaceholder: string | undefined = undefined;
+  export let loading = false;
 
   $: if (!$user.loading && !$user.data?.currentUser) {
     navigate("/login");
@@ -25,7 +26,11 @@
     <div class="layout__right">
       <LayoutHeader {searchPlaceholder} />
       <main role="main" class="main">
-        <slot />
+        {#if loading}
+          <Loader />
+        {:else}
+          <slot />
+        {/if}
       </main>
     </div>
   </div>

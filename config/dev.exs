@@ -75,3 +75,19 @@ config :phoenix, :stacktrace_depth, 20
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime
+
+config :ex_aws,
+  access_key_id: "AKIAI4D5YIOGEIVY4SBA",
+  secret_access_key: "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",
+  region: "ap-northeast-1",
+  s3: [
+    scheme: "https://",
+    bucket: "kuruma-staging-uploads",
+    region: "ap-northeast-1"
+  ]
+
+config :kuruma, Kuruma.Uploads, public_host: "d2iskwlr9tx3dy.cloudfront.net"
+
+if File.exists?("dev.secret.exs") do
+  import_config("dev.secret.exs")
+end

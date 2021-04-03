@@ -8,12 +8,18 @@
   import { usePaginateVehiclesQuery } from "../../graphql/queries/vehicleQueries";
   import Layout from "../../layout/Layout.svelte";
   import Loader from "../../components/Loader.svelte";
+  import type { ID } from "../../graphql/interfaces/common";
+  import { navigate } from "svelte-navigator";
 
   let vehicles: ReadonlyArray<Vehicle> = [];
   const params = useParams<PaginateVehiclesQueryVariables>();
   const page = Number($params.page) || 1;
   const query = usePaginateVehiclesQuery({ page });
   $: vehicles = $query.data?.result?.data || [];
+
+  const onClick = (id: ID) => () => {
+    navigate(`/vehicles/${id}`);
+  };
 </script>
 
 <Layout title="Vehicles">
@@ -29,7 +35,7 @@
       </thead>
       <tbody>
         {#each vehicles as vehicle (vehicle.id)}
-          <tr>
+          <tr on:click={onClick(vehicle.id)}>
             <td class="id">{vehicle.id}</td>
             <td>{vehicle.registration}</td>
             <td>{vehicle.manufacturingYear}</td>
