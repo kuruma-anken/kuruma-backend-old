@@ -9,7 +9,7 @@ defmodule Kuruma.Vehicles.Vehicle do
     field :registration, :string
     belongs_to :car_model, Kuruma.CarModels.CarModel
     has_one :car_maker, through: [:car_model, :car_maker]
-    has_many :vehicle_images, Kuruma.Images.VehicleAttachment
+    has_many :attachments, Kuruma.Attachments.VehicleAttachment
 
     timestamps()
   end

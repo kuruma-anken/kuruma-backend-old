@@ -33,9 +33,13 @@
 <style lang="scss">
   .pie-loader {
     display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 
   .pie-loader path {
-    fill: transparentize(#eee, 0.4);
+    fill: transparentize(#fff, 0.3);
   }
 </style>

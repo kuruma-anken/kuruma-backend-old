@@ -7,7 +7,7 @@ defmodule KurumaWeb.Api.Resolvers.UploadResolvers do
     {:ok, %{success: true, data: result}}
   end
 
-  def create_vehicle_image(args, _) do
+  def create_vehicle_attachment(args, _) do
     with {:ok, image} <- Images.create_vehicle_image(args) do
       {:ok, %{success: true, data: image}}
     end

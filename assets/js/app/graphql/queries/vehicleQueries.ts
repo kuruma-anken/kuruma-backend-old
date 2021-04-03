@@ -1,6 +1,6 @@
 import gql from "graphql-tag";
-import { query } from "svelte-apollo";
-import { ID, Page } from "../interfaces/common";
+import { mutation, query } from "svelte-apollo";
+import { ID, MutationResult, Page } from "../interfaces/common";
 
 export const PAGINATE_VEHICLES_QUERY = gql`
   query PaginateVehicles($page: Int = 1) {
@@ -34,6 +34,23 @@ export interface Vehicle {
   carModel: CarModel;
   manufacturingYear: number;
   registration: string;
+  attachments: VehicleAttachment[];
+  insertedAt: string;
+  updatedAt: string;
+}
+
+export enum VehicleAttachmentType {
+  Image = "IMAGE",
+  Document = "DOCUMENT"
+}
+
+export interface VehicleAttachment {
+  id: ID;
+  url: string;
+  publicUrl: string;
+  attachmentType: VehicleAttachmentType;
+  insertedAt: string;
+  updatedAt: string;
 }
 
 export interface CarModel {
@@ -77,6 +94,11 @@ export const GET_VEHICLE_QUERY = gql`
       }
       registration
       manufacturingYear
+      attachments {
+        id
+        publicUrl
+        attachmentType
+      }
     }
   }
 `;
@@ -93,3 +115,34 @@ export const useGetVehicleQuery = (id: ID) =>
   query<GetVehicleQueryResult, GetVehicleQueryVariables>(GET_VEHICLE_QUERY, {
     variables: { id }
   });
+
+export const CREATE_VEHICLE_ATTACHMENT_MUTATION = gql`
+  mutation CreateVehicleAttachment($input: VehicleAttachmentInput) {
+    result: createVehicleAttachment(input: $input) {
+      success
+      errors
+      data {
+        id
+        publicUrl
+      }
+    }
+  }
+`;
+
+export interface CreateVehicleAttachmentResult {
+  result: MutationResult<VehicleAttachment>;
+}
+
+export interface CreateVehicleAttachmentVariables {
+  input: VehicleAttachmentInput;
+}
+
+export interface VehicleAttachmentInput {
+  vehicleId: ID;
+  url: string;
+}
+
+export const useCreateVehicleAttachmentMutation = () =>
+  mutation<CreateVehicleAttachmentResult, CreateVehicleAttachmentVariables>(
+    CREATE_VEHICLE_ATTACHMENT_MUTATION
+  );

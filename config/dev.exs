@@ -77,6 +77,8 @@ config :phoenix, :stacktrace_depth, 20
 config :phoenix, :plug_init_mode, :runtime
 
 config :ex_aws,
+  access_key_id: [{:awscli, "default", 30}],
+  secret_access_key: [{:awscli, "default", 30}],
   region: "ap-northeast-1",
   s3: [
     scheme: "https://",

@@ -1,4 +1,4 @@
-defmodule Kuruma.Images.VehicleAttachment do
+defmodule Kuruma.Attachments.VehicleAttachment do
   use Ecto.Schema
   import Ecto.Changeset
 
@@ -9,7 +9,7 @@ defmodule Kuruma.Images.VehicleAttachment do
 
   defenum(AttachmentType, :vehicle_attachment_type, [:image, :document])
 
-  schema "vehicle_images" do
+  schema "vehicle_attachments" do
     field :url, :string
     field :vehicle_id, :id
     field :attachment_type, AttachmentType

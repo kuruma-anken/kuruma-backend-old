@@ -1,8 +1,24 @@
 defmodule KurumaWeb.Api.Types.Vehicles do
   use Absinthe.Schema.Notation
+  alias Kuruma.Uploads
   alias KurumaWeb.Api.Middleware.FormatPage
   alias KurumaWeb.Api.Middleware.LazyPreload
   alias KurumaWeb.Api.Resolvers.VehicleResolvers
+
+  enum :attachment_type do
+    value(:image)
+    value(:document)
+  end
+
+  object :vehicle_attachment do
+    field :id, non_null(:id)
+    field :url, non_null(:string)
+    field :attachment_type, non_null(:attachment_type)
+
+    field :public_url, non_null(:string) do
+      resolve(&Uploads.resolve_full_url/3)
+    end
+  end
 
   object :vehicle do
     field :id, non_null(:id)
@@ -12,8 +28,12 @@ defmodule KurumaWeb.Api.Types.Vehicles do
     field :inserted_at, non_null(:datetime)
     field :updated_at, non_null(:datetime)
 
+    field :attachments, non_null(list_of(non_null(:vehicle_attachment))) do
+      middleware(LazyPreload, :attachments)
+    end
+
     field :car_model, non_null(:car_model) do
-      middleware LazyPreload, :car_model
+      middleware(LazyPreload, :car_model)
     end
   end
 
@@ -23,7 +43,7 @@ defmodule KurumaWeb.Api.Types.Vehicles do
     field :car_maker_id, non_null(:id)
 
     field :car_maker, non_null(:car_maker) do
-      middleware LazyPreload, :car_maker
+      middleware(LazyPreload, :car_maker)
     end
 
     field :inserted_at, non_null(:datetime)
@@ -55,8 +75,8 @@ defmodule KurumaWeb.Api.Types.Vehicles do
     end
 
     field :get_vehicle, :vehicle do
-      arg :id, non_null(:id)
-      resolve &VehicleResolvers.get_vehicle/2
+      arg(:id, non_null(:id))
+      resolve(&VehicleResolvers.get_vehicle/2)
     end
   end
 end

@@ -1,0 +1,20 @@
+.uploader-thumbnail, .attachment-thumbnail
+  height: $vehicle-image-size
+  width: $vehicle-image-size
+  display: flex
+  position: relative
+
+  .preview
+    height: 100%
+    width: 100%
+    object-fit: cover
+
+.uploader-thumbnail
+  &::after
+    content: ""
+    position: absolute
+    top: 0
+    left: 0
+    right: 0
+    bottom: 0
+    background: transparentize(#999, .7)

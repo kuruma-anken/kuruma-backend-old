@@ -1,4 +1,6 @@
 defmodule Kuruma.Uploads do
+  alias Kuruma.Attachments.VehicleAttachment
+
   def get_all_config, do: Application.get_env(:kuruma, __MODULE__)
   def public_host, do: get_all_config() |> Keyword.get(:public_host)
 
@@ -16,5 +18,9 @@ defmodule Kuruma.Uploads do
     public_url = "https://#{public_host()}#{target_filename}"
 
     %{public_url: public_url, upload_url: upload_url}
+  end
+
+  def resolve_full_url(%VehicleAttachment{url: path}, _, _) do
+    "#{public_host()}#{path}"
   end
 end
