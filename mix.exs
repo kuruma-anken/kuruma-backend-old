@@ -46,6 +46,7 @@ defmodule Kuruma.MixProject do
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.0"},
       {:email_tld_validator, "~> 0.1"},
+      {:ecto_enum, "~> 1.4"},
 
       # S3 uploads
       {:ex_aws, "~> 2.1"},

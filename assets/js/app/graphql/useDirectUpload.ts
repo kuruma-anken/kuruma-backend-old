@@ -2,7 +2,7 @@ import gql from "graphql-tag";
 import { mutation } from "svelte-apollo";
 import { Writable, writable } from "svelte/store";
 import { uploadWithProgress } from "./uploadToS3";
-import type { ErrorObject, MutationResult } from "../types/common";
+import type { ErrorObject, MutationResult } from "./interfaces/common";
 
 export interface UploadData {
   publicURL: string;

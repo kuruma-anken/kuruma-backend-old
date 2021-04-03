@@ -9,6 +9,7 @@
   const user = useAuth();
   const navigate = useNavigate();
   export let title: string | null = null;
+  export let contentTitle: string | null = null;
   export let searchPlaceholder: string | undefined = undefined;
   export let loading = false;
 
@@ -29,6 +30,9 @@
         {#if loading}
           <Loader />
         {:else}
+          {#if contentTitle}
+            <h1 class="title">{contentTitle}</h1>
+          {/if}
           <slot />
         {/if}
       </main>

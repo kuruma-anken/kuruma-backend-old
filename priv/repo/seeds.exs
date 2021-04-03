@@ -1,5 +1,3 @@
-alias Kuruma.Repo
-
 alias Kuruma.CarMakers
 alias Kuruma.CarModels
 alias Kuruma.Vehicles

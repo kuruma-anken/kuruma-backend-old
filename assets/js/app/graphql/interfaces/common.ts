@@ -11,3 +11,11 @@ export interface Page<T> {
   data: ReadonlyArray<T>;
   pageInfo: PageInfo;
 }
+
+export type ErrorObject = Record<string, string>;
+
+export interface MutationResult<T> {
+  success: boolean;
+  errors?: ErrorObject;
+  data?: T;
+}
