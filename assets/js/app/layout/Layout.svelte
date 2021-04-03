@@ -5,9 +5,11 @@
   import Sidebar from "./Sidebar.svelte";
 
   import { useAuth } from "../graphql/queries/userQueries";
+  import LayoutHeader from "./LayoutHeader.svelte";
   const user = useAuth();
   const navigate = useNavigate();
   export let title: string | null = null;
+  export let searchPlaceholder: string | undefined = undefined;
 
   $: if (!$user.loading && !$user.data?.currentUser) {
     navigate("/login");
@@ -20,9 +22,11 @@
   <div class="layout">
     <OuterSidebar />
     <Sidebar {title} />
-    <main role="main" class="main">
-      <header class="layout-header" />
-      <slot />
-    </main>
+    <div class="layout__right">
+      <LayoutHeader {searchPlaceholder} />
+      <main role="main" class="main">
+        <slot />
+      </main>
+    </div>
   </div>
 {/if}

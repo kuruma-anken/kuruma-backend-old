@@ -9,3 +9,30 @@
 
 .layout-header
   height: $header-height
+  display: flex
+  align-items: center
+  padding-left: 2.5rem
+
+  &__search
+    color: transparentize($text, .5)
+    transition: color .1s ease-in-out
+    display: flex
+    align-items: center
+
+    svg
+      height: 1.5rem
+      fill: currentColor
+      margin-right: .5rem
+
+    &--focused
+      color: $text
+
+    &__input
+      background: none
+      border: 0
+      outline: 0
+      color: $text
+      font-size: 1em
+
+      &:placeholder-shown
+        color: inherit
