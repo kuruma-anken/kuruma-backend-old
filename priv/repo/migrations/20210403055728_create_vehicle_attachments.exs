@@ -2,12 +2,12 @@ defmodule Kuruma.Repo.Migrations.CreateVehicleAttachments do
   use Ecto.Migration
 
   def change do
-    Kuruma.Images.VehicleAttachment.AttachmentType.create_type()
+    Kuruma.Attachments.VehicleAttachment.AttachmentType.create_type()
 
     create table(:vehicle_attachments) do
       add :url, :string, null: false
       add :vehicle_id, references(:vehicles, on_delete: :nothing)
-      add :position, :integer, null: false
+      add :position, :integer
       add :attachment_type, :vehicle_attachment_type, null: false
 
       timestamps()

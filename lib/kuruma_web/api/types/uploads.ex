@@ -33,10 +33,5 @@ defmodule KurumaWeb.Api.Types.Uploads do
 
       resolve(&UploadResolvers.generate_presigned_upload_url/2)
     end
-
-    field :create_vehicle_attachment, non_null(:vehicle_attachment_result) do
-      arg(:params, non_null(:vehicle_attachment_params))
-      resolve(&UploadResolvers.create_vehicle_attachment/2)
-    end
   end
 end

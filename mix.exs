@@ -55,6 +55,7 @@ defmodule Kuruma.MixProject do
       {:sweet_xml, "~> 0.6"},
       {:uuid, "~> 1.1"},
       {:configparser_ex, "~> 4.0", only: :dev},
+      {:arc, "~> 0.11.0"},
 
       # Pagination
       {:scrivener_ecto, "~> 2.7"},

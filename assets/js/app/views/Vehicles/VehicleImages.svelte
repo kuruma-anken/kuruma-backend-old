@@ -22,7 +22,7 @@
   <FilePicker onChange={onUpload} />
   <div class="grid">
     {#if upload}
-      <UploaderThumbnail file={upload} prefix="vehicle_images" {onDone} />
+      <UploaderThumbnail file={upload} vehicleId={vehicle.id} {onDone} />
     {/if}
     {#each vehicle.attachments as attachment (attachment.id)}
       <VehicleAttachmentThumbnail {attachment} />

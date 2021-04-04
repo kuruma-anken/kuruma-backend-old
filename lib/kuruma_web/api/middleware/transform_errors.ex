@@ -22,7 +22,7 @@ defmodule KurumaWeb.Api.Middleware.TransformErrors do
     %{success: false, errors: %{"message" => str}}
   end
 
-  defp transform_errors(changeset) do
+  def transform_errors(changeset) do
     changeset
     |> remove_replace_content_changesets()
     |> Ecto.Changeset.traverse_errors(&ErrorHelpers.translate_error/1)

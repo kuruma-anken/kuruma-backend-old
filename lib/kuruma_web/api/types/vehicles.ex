@@ -4,10 +4,22 @@ defmodule KurumaWeb.Api.Types.Vehicles do
   alias KurumaWeb.Api.Middleware.FormatPage
   alias KurumaWeb.Api.Middleware.LazyPreload
   alias KurumaWeb.Api.Resolvers.VehicleResolvers
+  alias Kuruma.ImageUploader
 
   enum :attachment_type do
     value(:image)
     value(:document)
+  end
+
+  enum :image_size do
+    value(:tiny)
+    value(:tiny_2x)
+    value(:tiny_webp)
+    value(:tile)
+    value(:tile_2x)
+    value(:tile_webp)
+    value(:tile_webp_2x)
+    value(:original)
   end
 
   object :vehicle_attachment do
@@ -16,7 +28,8 @@ defmodule KurumaWeb.Api.Types.Vehicles do
     field :attachment_type, non_null(:attachment_type)
 
     field :public_url, non_null(:string) do
-      resolve(&Uploads.resolve_full_url/3)
+      arg(:size, :image_size)
+      resolve(&ImageUploader.resolve_full_url/3)
     end
   end
 

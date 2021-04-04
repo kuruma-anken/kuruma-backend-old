@@ -1,13 +1,14 @@
 <script lang="typescript">
   import { onMount } from "svelte";
-  import useDirectUpload from "../graphql/useDirectUpload";
+  import { useUploadVehicleAttachment } from "../graphql/apiUploader";
+  import { ID } from "../graphql/interfaces/common";
   import PieLoader from "./PieLoader.svelte";
   export let file: File;
-  export let prefix: string;
   export let onDone: () => void;
+  export let vehicleId: ID;
   let dataUrl: string | null = null;
 
-  const { upload, progress } = useDirectUpload(prefix);
+  const { upload, progress } = useUploadVehicleAttachment();
 
   const toDataURL = (file: File): Promise<string> => {
     return new Promise((resolve) => {
@@ -21,13 +22,13 @@
 
   onMount(async () => {
     if (file) {
-      const promise = upload(file);
+      const promise = upload(vehicleId, file);
       if (file.type.match("image/")) {
         dataUrl = await toDataURL(file);
       }
-      const { publicUrl } = await promise;
+      const res = await promise;
       onDone();
-      console.log(publicUrl);
+      console.log(res);
     }
   });
 </script>

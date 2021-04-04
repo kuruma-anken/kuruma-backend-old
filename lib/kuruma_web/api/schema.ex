@@ -4,6 +4,8 @@ defmodule KurumaWeb.Api.Schema do
   alias KurumaWeb.Api.Middleware.RestrictAccess
   import_types(KurumaWeb.Api.Types.Users)
   import_types(Absinthe.Type.Custom)
+  import_types(Absinthe.Plug.Types)
+
   import_types(KurumaWeb.Api.Types.Sessions)
   import_types(KurumaWeb.Api.Types.JSON)
   import_types(KurumaWeb.Api.Types.Vehicles)

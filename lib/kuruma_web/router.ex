@@ -17,6 +17,8 @@ defmodule KurumaWeb.Router do
   scope "/api" do
     pipe_through :api
 
+    post "/vehicles/uploads", KurumaWeb.UploadController, :create
+
     post "/graphql", Absinthe.Plug,
       schema: KurumaWeb.Api.Schema,
       before_send: {KurumaWeb.Api.CookieHelper, :maybe_put_cookie}

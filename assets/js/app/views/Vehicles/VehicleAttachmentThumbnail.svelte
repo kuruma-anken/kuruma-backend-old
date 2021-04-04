@@ -6,6 +6,6 @@
 
 <div class="attachment-thumbnail">
   {#if attachment.attachmentType === "IMAGE"}
-    <img src={attachment.fullUrl} alt="" class="preview" />
+    <img src={attachment.publicUrl} alt="" class="preview" />
   {/if}
 </div>

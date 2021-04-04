@@ -19,8 +19,4 @@ defmodule Kuruma.Uploads do
 
     %{public_url: public_url, upload_url: upload_url}
   end
-
-  def resolve_full_url(%VehicleAttachment{url: path}, _, _) do
-    "#{public_host()}#{path}"
-  end
 end
