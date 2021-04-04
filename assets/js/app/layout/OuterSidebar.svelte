@@ -17,8 +17,10 @@
     <Link to="/">車</Link>
   </div>
   <div class="outer-sidebar__menu">
-    <OuterSidebarLink to="/" title="Dashboard"><Dashboard /></OuterSidebarLink>
-    <OuterSidebarLink to="/vehicles" title="Vehicles"><Car /></OuterSidebarLink>
+    <OuterSidebarLink to="/" title="Vehicles"><Car /></OuterSidebarLink>
+    <OuterSidebarLink to="/dashboard" title="Dashboard"
+      ><Dashboard /></OuterSidebarLink
+    >
     <OuterSidebarLink to="/clients" title="Clients"
       ><UserTie /></OuterSidebarLink
     >

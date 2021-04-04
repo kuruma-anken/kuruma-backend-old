@@ -4,7 +4,7 @@
   export let attachment: VehicleAttachment;
 </script>
 
-<div class="attachment-thumbnail">
+<div class="attachment-thumbnail card">
   {#if attachment.attachmentType === "IMAGE"}
     <img src={attachment.publicUrl} alt="" class="preview" />
   {/if}

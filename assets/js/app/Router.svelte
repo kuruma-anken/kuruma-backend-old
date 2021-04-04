@@ -8,9 +8,9 @@
 </script>
 
 <Router>
-  <Route path="/"><Dashboard /></Route>
+  <Route path="/"><VehicleList /></Route>
   <Route path="/login"><Login /></Route>
-  <Route path="/vehicles"><VehicleList /></Route>
+  <Route path="/dashboard"><Dashboard /></Route>
   <Route path="/vehicles/:id"><ShowVehicle /></Route>
   <Route><NotFound /></Route>
 </Router>

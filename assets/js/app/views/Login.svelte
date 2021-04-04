@@ -5,9 +5,11 @@
 
   import InputField from "../components/InputField.svelte";
   import { signInMutation } from "../graphql/queries/userQueries";
+  import clsx from "clsx";
 
   const mutate = signInMutation();
   const navigate = useNavigate();
+  let loading = false;
 
   $: if (!$user.loading && $user.data?.currentUser) {
     navigate("/");
@@ -21,7 +23,7 @@
   };
 
   const onSubmit = async (e: Event) => {
-    e.preventDefault();
+    loading = true;
     const res = await mutate({
       variables: form,
       refetchQueries: ["CurrentUser"],
@@ -31,7 +33,8 @@
       errorMessage = "";
       navigate("/");
     } else {
-      errorMessage = "login failed";
+      loading = false;
+      errorMessage = "Invalid email/password combination.";
     }
   };
 </script>
@@ -40,12 +43,14 @@
   <div class="login-content">
     <div class="card">
       <div class="card-content">
-        <form on:submit={onSubmit}>
-          <h1 class="title">Log in</h1>
+        <form on:submit|preventDefault={onSubmit}>
           <div>
-            {#if errorMessage}<div class="notification is-danger">
+            <h1 class="title mb-4">Log in</h1>
+            {#if errorMessage}<div class="notification is-warning">
                 {errorMessage}
               </div>{/if}
+          </div>
+          <div>
             <InputField
               id="email"
               name="email"
@@ -62,7 +67,11 @@
               bind:value={form.password}
             />
           </div>
-          <button class="button is-primary is-fullwidth mt-4">Submit</button>
+          <button
+            class={clsx("button is-primary is-fullwidth mt-4", {
+              "is-loading": loading
+            })}>Submit</button
+          >
         </form>
       </div>
     </div>

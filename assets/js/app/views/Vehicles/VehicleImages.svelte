@@ -5,6 +5,7 @@
   import UploaderThumbnail from "../../components/UploaderThumbnail.svelte";
 
   export let vehicle: Vehicle;
+  export let reloadVehicle: () => void;
   let upload: File | null = null;
 
   const onUpload = (ev: any) => {
@@ -14,19 +15,20 @@
   };
 
   const onDone = () => {
-    // upload = null;
+    upload = null;
+    reloadVehicle();
   };
 </script>
 
 <section class="vehicle-images">
   <FilePicker onChange={onUpload} />
   <div class="grid">
-    {#if upload}
-      <UploaderThumbnail file={upload} vehicleId={vehicle.id} {onDone} />
-    {/if}
     {#each vehicle.attachments as attachment (attachment.id)}
       <VehicleAttachmentThumbnail {attachment} />
     {/each}
+    {#if upload}
+      <UploaderThumbnail file={upload} vehicleId={vehicle.id} {onDone} />
+    {/if}
   </div>
 </section>
 

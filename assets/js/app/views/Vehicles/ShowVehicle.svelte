@@ -19,5 +19,5 @@
   loading={$query.loading}
   contentTitle={`Vehicle: ${title}`}
 >
-  {#if vehicle}<VehicleImages {vehicle} />{/if}
+  {#if vehicle}<VehicleImages {vehicle} reloadVehicle={query.refetch} />{/if}
 </Layout>
