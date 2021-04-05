@@ -19,3 +19,8 @@ export interface MutationResult<T> {
   errors?: ErrorObject;
   data?: T;
 }
+
+export interface SelectOption {
+  label: string;
+  value: string | number;
+}

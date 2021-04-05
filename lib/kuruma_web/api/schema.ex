@@ -11,10 +11,12 @@ defmodule KurumaWeb.Api.Schema do
   import_types(KurumaWeb.Api.Types.Vehicles)
   import_types(KurumaWeb.Api.Types.Pagination)
   import_types(KurumaWeb.Api.Types.Uploads)
+  import_types(KurumaWeb.Api.Types.CarModels)
 
   query do
     import_fields(:user_queries)
     import_fields(:vehicle_queries)
+    import_fields(:car_model_queries)
   end
 
   mutation do

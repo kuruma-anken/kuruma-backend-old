@@ -18,12 +18,16 @@
   }
 </script>
 
+<svelte:head>
+  <title>{title ? `${contentTitle ?? title} -` : ""} Kuruma</title>
+</svelte:head>
+
 {#if $user.loading}
   <Loader />
 {:else if $user.data && $user.data.currentUser}
   <div class="layout">
     <OuterSidebar />
-    <Sidebar {title} />
+    <Sidebar {title}><slot name="sidebar" /></Sidebar>
     <div class="layout__right">
       <LayoutHeader {searchPlaceholder} />
       <main role="main" class="main">

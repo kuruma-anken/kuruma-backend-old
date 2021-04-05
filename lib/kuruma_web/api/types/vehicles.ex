@@ -50,31 +50,6 @@ defmodule KurumaWeb.Api.Types.Vehicles do
     end
   end
 
-  object :car_model do
-    field :id, non_null(:id)
-    field :name, non_null(:string)
-    field :car_maker_id, non_null(:id)
-
-    field :car_maker, non_null(:car_maker) do
-      middleware(LazyPreload, :car_maker)
-    end
-
-    field :inserted_at, non_null(:datetime)
-    field :updated_at, non_null(:datetime)
-  end
-
-  object :car_maker do
-    field :id, non_null(:id)
-    field :name, non_null(:string)
-
-    field :car_models, non_null(list_of(non_null(:car_model))) do
-      middleware(LazyPreload, :car_models)
-    end
-
-    field :inserted_at, non_null(:datetime)
-    field :updated_at, non_null(:datetime)
-  end
-
   object :vehicle_page do
     field :data, non_null(list_of(non_null(:vehicle)))
     field :page_info, non_null(:page_info)

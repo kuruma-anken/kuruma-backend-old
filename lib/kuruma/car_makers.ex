@@ -9,7 +9,9 @@ defmodule Kuruma.CarMakers do
   alias Kuruma.CarMakers.CarMaker
 
   def list_car_makers do
-    Repo.all(CarMaker)
+    CarMaker
+    |> order_by([c], c.name)
+    |> Repo.all()
   end
 
   def get_car_maker!(id), do: Repo.get!(CarMaker, id)

@@ -4,12 +4,20 @@ defmodule Kuruma.CarModels do
   """
 
   import Ecto.Query, warn: false
+  import Guards
   alias Kuruma.Repo
 
   alias Kuruma.CarModels.CarModel
 
   def list_car_models do
     Repo.all(CarModel)
+  end
+
+  def list_car_models_by_car_maker(car_maker_id) when is_id(car_maker_id) do
+    from(m in CarModel)
+    |> where([m], m.car_maker_id == ^car_maker_id)
+    |> order_by([m], m.name)
+    |> Repo.all()
   end
 
   def get_car_model!(id), do: Repo.get!(CarModel, id)

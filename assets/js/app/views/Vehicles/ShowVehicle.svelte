@@ -2,7 +2,7 @@
   import { useGetVehicleQuery } from "../../graphql/queries/vehicleQueries";
   import type { Vehicle } from "../../graphql/queries/vehicleQueries";
   import { useParams } from "svelte-navigator";
-  import Layout from "../../layout/Layout.svelte";
+  import VehiclesLayout from "./VehiclesLayout.svelte";
   import { formatVehicleDisplayName } from "../../helpers/vehicleHelpers";
   import VehicleImages from "./VehicleImages.svelte";
 
@@ -14,10 +14,6 @@
   $: title = formatVehicleDisplayName(vehicle);
 </script>
 
-<Layout
-  title="Vehicles"
-  loading={$query.loading}
-  contentTitle={`Vehicle: ${title}`}
->
+<VehiclesLayout loading={$query.loading} contentTitle={`Vehicle: ${title}`}>
   {#if vehicle}<VehicleImages {vehicle} reloadVehicle={query.refetch} />{/if}
-</Layout>
+</VehiclesLayout>

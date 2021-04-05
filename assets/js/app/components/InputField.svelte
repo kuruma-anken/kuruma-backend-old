@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { onMount } from "svelte";
   export let id = "";
   export let value = "";
   export let label: string | undefined;
