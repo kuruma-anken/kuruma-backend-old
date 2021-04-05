@@ -1,5 +1,5 @@
 <script lang="typescript">
-  import { useNavigate } from "svelte-navigator";
+  import { useNavigate, useFocus } from "svelte-navigator";
   import { useAuth } from "../graphql/queries/userQueries";
   const user = useAuth();
 
@@ -10,6 +10,7 @@
   const mutate = signInMutation();
   const navigate = useNavigate();
   let loading = false;
+  const autoFocus = useFocus();
 
   $: if (!$user.loading && $user.data?.currentUser) {
     navigate("/");
@@ -57,7 +58,7 @@
               bind:value={form.email}
               label="Email:"
               type="text"
-              autofocus={true}
+              {autoFocus}
             />
             <InputField
               id="password"
